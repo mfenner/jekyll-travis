@@ -41,20 +41,20 @@ You can add the example files provided in this repo to your Jekyll project to ge
 * add the following to your Jekyll `_config.yml` file: `username`, `repo` and `branch`.
 * make sure `destination` in `_config.yml` matches the path to the destination repo defined above.
 * we have seen [intermittent timeouts](http://blog.travis-ci.com/2013-05-20-network-timeouts-build-retries/) fetching gems from Rubygems.org. `install: bundle install` lets Travis CI automatically retry, and we are using `source "http://production.cf.rubygems.org/"` in Gemfile to point to a different repository.
-* add the contents of `Rakefile` to your Jekyll Rakefile (or replace it). The provided `Rakefile` as some additional commands, but the important one here is `rake site:deploy`.
+* add the contents of `Rakefile` to your Jekyll Rakefile (or replace it). The provided `Rakefile` has some additional commands, but the important one here is `rake site:deploy`.
 * (Optionally) add a Travis CI logo/link to your README.
 
 ## To Do
-Clean up the code to make etup easier. Ideally we should be able to figure out how to build the Jekyll site based on the repo name: if the name is `username.github.io`, then we should build in the master branch and need another branch to find Jekyll, otherwise we take the `master` branch and build in the `gh-pages` branch.
+Clean up the code to make etup easier. Ideally we should be able to figure out how to build the Jekyll site based on the repo name: if the name is `username.github.io`, then we should build in the `master` branch and need another branch to find Jekyll, otherwise we take the `master` branch and build in the `gh-pages` branch.
 
-It would be easier if Github would standardize on the `gh-pages` branch for content that should be served as Github Pages. I'm sure this discussion has been had many times.
+It would be easier if Github would standardize on the `gh-pages` branch for content that should be served as Github Pages, but I'm sure this discussion has been had many times.
 
 ## Examples
 
 The following sites use the workflow described above. Please send me a note if you want me to add your site.
 
-* [ALM Community Website](http://articlemetrics.github.io/) - the project website for an Open Source software project. Github repo [here](https://github.com/articlemetrics/gh-pages), the site currently uses Jekyll in `--safe` mode (Travis CI needs under 2 min to build the site).
-* [Opening Science](http://book.openingscience.org/) - a book on Open Science, Github repo [here](https://github.com/openingscience/book).
+* [ALM Community Website](http://articlemetrics.github.io/) - the project website for an Open Source software project. Github repo [here](https://github.com/articlemetrics/articlemetrics.github.io), the site currently uses Jekyll in `--safe` mode (Travis CI needs under 2 min to build the site).
+* [Opening Science](http://book.openingscience.org/) - a book on Open Science, Github repo [here](https://github.com/openingscience/openingscience.github.io).
 
 ## License
 
