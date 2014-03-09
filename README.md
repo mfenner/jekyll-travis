@@ -9,7 +9,7 @@ Integrate Jekyll with Github Pages and Travis CI to automatically build Jekyll s
 
 Letting Github Pages generate the Jekyll site has three important limitations:
 
-* we can't use an [asset pipeline](http://guides.rubyonrails.org/asset_pipeline.html, e.g. to compile sass into css or to concatenate and minify javascript
+* we can't use an [asset pipeline](http://guides.rubyonrails.org/asset_pipeline.html), e.g. to compile sass into css or to concatenate and minify javascript
 * we can't use [jekyll plugins](http://jekyllrb.com/docs/plugins/)
 * we can't use the [Pandoc](http://johnmacfarlane.net/pandoc/) markdown converter
 
