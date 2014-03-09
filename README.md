@@ -26,9 +26,9 @@ The workflow is as follows:
 * `git pull` to the Github repo triggers Travis CI
 * Travis CI starts up a virtual machine and installs all required software (mostly Ruby gems)
 * We use a custom rake task to tell travis CI how to build the Jekyll site and push the updated content back to Github
-* Travis CI clones a second repository (either a different repo or different branch of the same repo) that holds the static HTML pages
-* Travis CI runs `jekyll build` with the destination in the second repo
-* Travis CI does a `git push` of the updated second repository
+* Travis CI clones a different branch (either `gh-pages` or `master`, depending on the kind of Github repo) that holds the static HTML pages
+* Travis CI runs `jekyll build` with the destination in the other branch
+* Travis CI does a `git push` of the other branch
 * Github Pages starts serving the updates site
 
 Depending on the required software that needs to be installed, the whole process takes anywhere between 1 and 15 min and is fully automated.
@@ -38,11 +38,16 @@ You can add the example files provided in this repo to your Jekyll project to ge
 * make sure you have enabled your source repo in the Travis CI admin dashboard so that the webhook is triggered
 * install the travis gem (`gem install travis`) and generate a secret version of three required `ENV` variables `GIT_NAME`, `GIT_EMAIL` and `GH_TOKEN` (more info in the sample `.travis.yml`).
 * make sure you add `vendor` to your .gitignore as Travis CI is vendoring the Ruby gems there. The `vendor` folder should also be excluded in the Jekyll `_config.yml` (see example file).
-* add the following to your Jekyll `_config.yml` file: `github_user`, `source_repo` and `destination_repo`.
+* add the following to your Jekyll `_config.yml` file: `username`, `repo` and `branch`.
 * make sure `destination` in `_config.yml` matches the path to the destination repo defined above.
 * we have seen [intermittent timeouts](http://blog.travis-ci.com/2013-05-20-network-timeouts-build-retries/) fetching gems from Rubygems.org. `install: bundle install` lets Travis CI automatically retry, and we are using `source "http://production.cf.rubygems.org/"` in Gemfile to point to a different repository.
 * add the contents of `Rakefile` to your Jekyll Rakefile (or replace it). The provided `Rakefile` as some additional commands, but the important one here is `rake site:deploy`.
 * (Optionally) add a Travis CI logo/link to your README.
+
+## To Do
+Clean up the code to make etup easier. Ideally we should be able to figure out how to build the Jekyll site based on the repo name: if the name is `username.github.io`, then we should build in the master branch and need another branch to find Jekyll, otherwise we take the `master` branch and build in the `gh-pages` branch.
+
+It would be easier if Github would standardize on the `gh-pages` branch for content that should be served as Github Pages. I'm sure this discussion has been had many times.
 
 ## Examples
 

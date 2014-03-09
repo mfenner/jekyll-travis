@@ -6,9 +6,11 @@ relative_source: ../EXAMPLE/
 destination: ../EXAMPLE/
 
 # Settings for deploy rake task
-github_user: EXAMPLE
-source_repo: EXAMPLE
-destination_repo: EXAMPLE
+# Use branch: gh-pages for projects
+# User branch: source (or anything that is not master) for user/organization
+username: EXAMPLE
+repo: EXAMPLE
+branch: source
 
 permalink: pretty
 
