@@ -1,5 +1,12 @@
 language: ruby
 install: bundle install
+
+# To use Pandoc, include the following instead
+# language: haskell
+# install:
+#  - bundle install
+#  - travis_retry cabal install pandoc pandoc-citeproc
+
 script: bundle exec rake site:deploy
 env:
   global:
