@@ -10,6 +10,19 @@ require 'date'
 require 'yaml'
 
 CONFIG = YAML.load(File.read('_config.yml'))
+REPO = CONFIG["repo"] || "#{CONFIG["username"]}.github.io"
+
+# Determine source and destination branch
+# User or organization: source -> master
+# Project: master -> gh-pages
+# Name of source branch for user/organization defaults to "source"
+if REPO == "#{CONFIG["username"]}.github.io"
+  SOURCE_BRANCH = CONFIG['branch'] || "source"
+  DESTINATION_BRANCH = "master"
+else
+  SOURCE_BRANCH = "master"
+  DESTINATION_BRANCH = "gh-pages"
+end
 
 #############################################################################
 #
@@ -74,7 +87,7 @@ end
 
 def check_destination
   unless Dir.exist? CONFIG["destination"]
-    sh "git clone https://#{ENV['GIT_NAME']}:#{ENV['GH_TOKEN']}@github.com/#{CONFIG["username"]}/#{CONFIG["repo"]}.git #{CONFIG["destination"]}"
+    sh "git clone https://#{ENV['GIT_NAME']}:#{ENV['GH_TOKEN']}@github.com/#{CONFIG["username"]}/#{REPO}.git #{CONFIG["destination"]}"
   end
 end
 
@@ -193,18 +206,8 @@ namespace :site do
     # Make sure destination folder exists as git repo
     check_destination
 
-    # Determine source and destination branch
-    # CONFIG['branch'] is source branch
-    # Project: master -> gh-pages
-    # User or organization: source -> master
-    source_branch = CONFIG['branch'] || "master"
-    if source_branch == "master"
-      destination_branch = "gh-pages"
-    else
-      destination_branch = "master"
-    end
-    sh "git checkout #{source_branch}"
-    Dir.chdir(CONFIG["destination"]) { sh "git checkout #{destination_branch}" }
+    sh "git checkout #{SOURCE_BRANCH}"
+    Dir.chdir(CONFIG["destination"]) { sh "git checkout #{DESTINATION_BRANCH}" }
 
     # Generate the site
     sh "bundle exec jekyll build"
@@ -213,9 +216,9 @@ namespace :site do
     sha = `git log`.match(/[a-z0-9]{40}/)[0]
     Dir.chdir(CONFIG["destination"]) do
       sh "git add --all ."
-      sh "git commit -m 'Updating to #{CONFIG['username']}/#{CONFIG['repo']}@#{sha}.'"
-      sh "git push origin #{destination_branch}"
-      puts "Pushed updated branch #{destination_branch} to GitHub Pages"
+      sh "git commit -m 'Updating to #{CONFIG['username']}/#{REPO}@#{sha}.'"
+      sh "git push origin #{DESTINATION_BRANCH}"
+      puts "Pushed updated branch #{DESTINATION_BRANCH} to GitHub Pages"
     end
   end
 end

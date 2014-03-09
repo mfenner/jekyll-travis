@@ -6,8 +6,11 @@ relative_source: ../EXAMPLE/
 destination: ../EXAMPLE/
 
 # Settings for deploy rake task
-# User branch: source (or anything that is not master) for user/organization
-# Use branch: master for projects, can also be omitted
+# Username and repo of Github repo, e.g.
+# https://github.com/USERNAME/REPO.git
+# repo defaults to USERNAME.github.io
+# Branch defaults to "source" for USERNAME.github.io
+# or "master" otherwise
 username: EXAMPLE
 repo: EXAMPLE
 branch: source

@@ -44,11 +44,6 @@ You can add the example files provided in this repo to your Jekyll project to ge
 * add the contents of `Rakefile` to your Jekyll Rakefile (or replace it). The provided `Rakefile` has some additional commands, but the important one here is `rake site:deploy`.
 * (Optionally) add a Travis CI logo/link to your README.
 
-## To Do
-Clean up the code to make etup easier. Ideally we should be able to figure out how to build the Jekyll site based on the repo name: if the name is `username.github.io`, then we should build in the `master` branch and need another branch to find Jekyll, otherwise we take the `master` branch and build in the `gh-pages` branch.
-
-It would be easier if Github would standardize on the `gh-pages` branch for content that should be served as Github Pages, but I'm sure this discussion has been had many times.
-
 ## Examples
 
 The following sites use the workflow described above. Please send me a note if you want me to add your site.
