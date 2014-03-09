@@ -50,3 +50,7 @@ The following sites use the workflow described above. Please send me a note if y
 
 * [ALM Community Website](http://articlemetrics.github.io/) - the project website for an Open Source software project. Github repo [here](https://github.com/articlemetrics/gh-pages), the site currently uses Jekyll in `--safe` mode (Travis CI needs under 2 min to build the site).
 * [Opening Science](http://book.openingscience.org/) - a book on Open Science, Github repo [here](https://github.com/openingscience/book).
+
+## License
+
+See [LICENSE](LICENSE).
