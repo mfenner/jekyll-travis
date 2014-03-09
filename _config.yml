@@ -1,0 +1,26 @@
+safe: true
+lsi: false
+pygments: true
+
+relative_source: ../EXAMPLE/
+destination: ../EXAMPLE/
+
+# Settings for deploy rake task
+github_user: EXAMPLE
+source_repo: EXAMPLE
+destination_repo: EXAMPLE
+
+permalink: pretty
+
+paginate: 10
+paginate_path: "blog/page:num"
+
+exclude:
+  - README.md
+  - Rakefile
+  - Gemfile
+  - Gemfile.lock
+  - changelog.md
+  - "*.Rmd"
+  - vendor
+  - .travis.yml

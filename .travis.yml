@@ -1,0 +1,11 @@
+language: ruby
+install: bundle install
+script: bundle exec rake site:deploy
+env:
+  global:
+    secure: EXAMPLE
+
+# Generate your secure token with the travis gem:
+# get Github token from your Travis CI profile page
+# gem install travis
+# travis encrypt 'GIT_NAME="YOUR_USERNAME" GIT_EMAIL="YOUR_EMAIL" GH_TOKEN=YOUR_TOKEN'
