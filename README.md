@@ -31,7 +31,7 @@ The workflow is as follows:
 * Travis CI does a `git push` of the other branch
 * Github Pages starts serving the updates site
 
-Depending on the required software that needs to be installed, the whole process takes anywhere between 1 and 15 min and is fully automated.
+Depending on the required software that needs to be installed, the whole process takes anywhere between 1 and 5 min and is fully automated.
 
 You can add the example files provided in this repo to your Jekyll project to get started. Please remember the following:
 
